@@ -1,0 +1,11 @@
+{% extends 'base.jinja2' %}
+
+{% block subtitle %}Single Letter{% endblock subtitle %}
+
+{% block content %}
+    <p>Dear {{donor.first_name}} {{donor.last_name}},</p>
+    <p>Thank you for your very kind donation of ${{donor.donation}}.</p>
+    <p>It will be put to very good use.</p>
+    <p>Sincerely,</p>
+    <p>-The Team</p>
+{% endblock content %}

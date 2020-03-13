@@ -1,0 +1,29 @@
+{% extends 'base.jinja2' %}
+
+{% block subtitle %}Donor Edit{% endblock subtitle %}
+
+{% block content %}
+    <h3>Edit Donor</h3>
+    <form method="post" action="{{ url_for('donor_edit') }}">
+
+        <div class="input-group">
+            <label for="code">Code: </label>
+            <input type="text" id="code" name="code" value="{{donor.code}}" readonly="readonly">
+        </div>
+
+        <div class="input-group">
+            <label for="first_name">First Name: </label>
+            <input type="text" id="first_name" name="first_name" value="{{donor.first_name}}">
+        </div>
+
+        <div class="input-group">
+            <label for="last_name">Last Name: </label>
+            <input type="text" id="last_name" name="last_name" value="{{donor.last_name}}">
+        </div>
+
+        <input type="hidden" id="prev_name" name="prev_name" value="{{donor.last_name}}">
+
+        <input type="submit" value="Update">
+
+    </form>
+{% endblock content %}

@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>Mailroom</title>
+</head>
+<body>
+
+    <div class="sidebar">
+        <nav>
+
+            <h3>Donors</h3>
+            <ul>
+                <li><a href="{{ url_for('donor_add') }}">Add Donor</a></li>
+                <li><a href="{{ url_for('donors_list') }}">List Donors</a></li>
+            </ul>
+
+            <h3>Reports</h3>
+            <ul>
+                <li><a href="{{ url_for('donors_report') }}">Donors Report</a></li>
+                <li><a href="{{ url_for('donor_report') }}">Donor Report</a></li>
+            </ul>
+
+            <h3>Gratitude</h3>
+            <ul>
+                <li><a href="{{ url_for('letter_multiple') }}">Generate Letters</a></li>
+            </ul>
+
+        </nav>
+    </div>
+
+    <div class="content">
+	   <h2>{% block subtitle %}Mailroom{% endblock subtitle %}</h2>
+	   {% block content %} {% endblock content %}
+    </div>
+
+    <style>
+        body {
+            font-family: Helvetica, Arial;
+            font-size: 14px;
+        }
+        table th,
+        table td {
+            font-size: 14px;
+        }
+        input:read-only {
+            background: #ccc !important;
+        }
+        .sidebar {
+            width: 20%;
+            float: left;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar ul li {
+            margin: 10px 0;
+            display: block;
+        }
+        .content {
+            width: 80%;
+            float: left;
+        }
+        label {
+            display: block;
+            font-size: 12px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        th {
+            background-color: #4b2e83;
+            color: #fff;
+        }
+        th, td {
+            border-bottom: 1px solid #ddd;
+        }
+        tr:nth-child(even) {background-color: #f2f2f2;}
+        button {
+            display: inline-block;
+            background-color: #4b2e83;
+            color: #fff;
+            border-radius: 4px;
+            margin: 0 5px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 8px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .donors-list ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .info {
+            display: inline-block;
+        }
+        .info span {
+            display: inline-block;
+            margin: 0 15px;
+            height: 30px;
+            line-height: 30px;
+        }
+        input[type="text"],
+        input[type="number"] {
+            display: block;
+            border: solid thin #ccc;
+            height: 36px;
+            line-height: 36px;
+            text-indent: 8px;
+            width: 100%;
+            max-width: 300px;
+        }
+        input[type="submit"] {
+            height: 36px;
+            line-height: 36px;
+            background-color: #4b2e83;
+            color: #fff;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 300px;
+        }
+    </style>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Micro Blog</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'django_blog.css' %}">
+  </head>
+  <body>
+    <div id="header"> {# header begins here #}
+      Micro Blog
+    </div> {# header ends here #}
+    <div id="container">
+      <div id="content">
+      {% block content %}
+        Index page
+      {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>

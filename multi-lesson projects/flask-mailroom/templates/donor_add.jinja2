@@ -1,0 +1,28 @@
+{% extends 'base.jinja2' %}
+
+{% block subtitle %}Donor Add{% endblock subtitle %}
+
+{% block content %}
+
+    <form method="post" action="{{ url_for('donor_add') }}">
+
+        <div class="input-group">
+            <label for="first_name">First Name: </label>
+            <input type="text" id="first_name" name="first_name" value="">
+        </div>
+
+        <div class="input-group">
+            <label for="last_name">Last Name: </label>
+            <input type="text" id="last_name" name="last_name" value="">
+        </div>
+
+        <div class="input-group">
+            <label for="donation">Donotion: </label>
+            <input type="number" id="donation" name="donation" value="">
+        </div>
+
+        <input type="submit" value="Add Donor">
+
+    </form>
+
+{% endblock content %}

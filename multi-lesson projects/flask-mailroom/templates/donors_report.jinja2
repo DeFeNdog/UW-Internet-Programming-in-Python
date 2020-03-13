@@ -1,0 +1,33 @@
+{% extends 'base.jinja2' %}
+
+{% block subtitle %}Multiple Donors Report{% endblock subtitle %}
+
+{% block content %}
+    <div class="donors-list">
+
+        <form method="get" id="myForm" action="#" hidden>
+            <input type="text" name="code" id="code" value="" />
+        </form>
+
+        <table cellpadding="10">
+            <tr>
+                <th align="left">Code</th>
+                <th align="left">First</th>
+                <th align="left">Last</th>
+                <th align="right" align="center">Count</th>
+                <th align="right">Average</th>
+                <th align="right">Total</th>
+            </tr>
+            {% for donor in donors recursive %}
+                <tr>
+                    <td>{{donor.code}}</td>
+                    <td>{{donor.first_name}}</td>
+                    <td>{{donor.last_name}}</td>
+                    <td align="center">{{donor.count}}</td>
+                    <td align="right">${{donor.average}}</td>
+                    <td align="right">${{donor.donations}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock content %}

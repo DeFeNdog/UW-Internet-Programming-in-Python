@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Menu</h1>
+<ul>
+    <li>
+        <a href="{% url 'blog_index' %}">Blog</a>
+    </li>
+    <li>
+        <a href="{% url 'post_form' %}">Post Form</a>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'base.jinja2' %}
+
+{% block subtitle %}Donor Delete{% endblock subtitle %}
+
+{% block content %}
+    <div style="margin-bottom: 30px;">Donor deleted: {{last_name}} -- {{code}}</div>
+    <div><a href="{{ url_for('donors_list') }}">&laquo; Back to Donors List</a></div>
+{% endblock content %}

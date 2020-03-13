@@ -1,0 +1,70 @@
+{% extends 'base.jinja2' %}
+
+{% block subtitle %}Single Donor Report{% endblock subtitle %}
+
+{% block content %}
+    <div class="donors-list">
+
+        {% if not donor %}
+
+            <form method="post" id="myForm" action="#" hidden>
+                <input type="text" name="code" id="code" value="" />
+            </form>
+
+            <table cellpadding="10">
+                <tr>
+                    <th align="left">Code</th>
+                    <th align="left">First</th>
+                    <th align="left">Last</th>
+                    <th align="center">Action</th>
+                </tr>
+                {% for donor in donors recursive %}
+                    <tr>
+                        <td>{{donor.code}}</td>
+                        <td>{{donor.first_name}}</td>
+                        <td>{{donor.last_name}}</td>
+                        <td>
+                            <button class="report" data-code="{{donor.code}}">
+                                <i class="fa fa-list-alt" aria-hidden="true"></i> Report
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+            <script>
+                $('.report').on('click', function() {
+                    document.getElementById('code').value = $(this).data("code");
+                    document.getElementById('myForm').action = '/donor/report';
+                    document.getElementById('myForm').submit();
+                });
+            </script>
+
+        {% endif %}
+
+        {% if donor %}
+            <table cellpadding="10">
+                <tr>
+                    <th align="left">Code</th>
+                    <th align="left">First</th>
+                    <th align="left">Last</th>
+                    <th align="right" align="center">Count</th>
+                    <th align="right">Average</th>
+                    <th align="right">Total</th>
+                </tr>
+                <tr>
+                    <td>{{donor.code}}</td>
+                    <td>{{donor.first_name}}</td>
+                    <td>{{donor.last_name}}</td>
+                    <td align="center">{{donor.count}}</td>
+                    <td align="right">${{donor.average}}</td>
+                    <td align="right">${{donor.donations}}</td>
+                </tr>
+            </table>
+
+        {% endif %}
+
+    </div>
+
+{% endblock content %}

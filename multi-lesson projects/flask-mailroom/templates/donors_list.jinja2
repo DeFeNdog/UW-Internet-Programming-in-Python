@@ -1,0 +1,66 @@
+{% extends 'base.jinja2' %}
+
+{% block subtitle %}Donor List{% endblock subtitle %}
+
+{% block content %}
+    <div class="donors-list">
+
+        <form method="get" id="myForm" action="#" hidden>
+            <input type="text" name="code" id="code" value="" />
+        </form>
+
+        <table cellpadding="10">
+            <tr>
+                <th align="left">Code</th>
+                <th align="left">First</th>
+                <th align="left">Last</th>
+                <th align="right">Total Donations</th>
+                <th colspan="3" align="center">Actions</th>
+            </tr>
+            {% for donor in donors recursive %}
+                <tr>
+                    <td>{{donor.code}}</td>
+                    <td>{{donor.first_name}}</td>
+                    <td>{{donor.last_name}}</td>
+                    <td align="right">${{donor.donations}}</td>
+                    <td>
+                        <button class="delete" data-code="{{donor.code}}">
+                            <i class="fa fa-minus-square" aria-hidden="true"></i> Delete
+                        </button>
+                    </td>
+                    <td>
+                        <button class="edit" data-code="{{donor.code}}">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+                        </button>
+                    </td>
+                    <td>
+                        <button class="add" data-code="{{donor.code}}">
+                            <i class="fa fa-plus-square" aria-hidden="true"></i> Add Donations
+                        </button>
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+    <script>
+        $('.delete').on('click', function(el) {
+            document.getElementById('code').value = this.dataset.code;
+            document.getElementById('myForm').action = '/donor/delete';
+            document.getElementById('myForm').submit();
+        });
+        $('.edit').on('click', function(el) {
+            document.getElementById('code').value = this.dataset.code;
+            document.getElementById('myForm').action = '/donor/edit';
+            document.getElementById('myForm').submit();
+        });
+        $('.add').on('click', function(el) {
+            document.getElementById('code').value = this.dataset.code;
+            document.getElementById('myForm').action = '/donation/add';
+            document.getElementById('myForm').submit();
+        });
+    </script>
+
+{% endblock content %}
